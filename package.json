@@ -1,0 +1,17 @@
+{
+	"name": "apstassinopoulos-data503-project",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "stassinopoulosari",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"protobufjs": "^7.4.0"
+	},
+	"devDependencies": {
+		"protobufjs-cli": "^1.1.3"
+	}
+}

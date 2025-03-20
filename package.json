@@ -3,13 +3,16 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
+		"start": "node index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "stassinopoulosari",
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
-		"protobufjs": "^7.4.0"
+		"pg": "^8.14.1",
+		"protobufjs": "^7.4.0",
+		"toad-scheduler": "^3.0.1"
 	},
 	"devDependencies": {
 		"protobufjs-cli": "^1.1.3"

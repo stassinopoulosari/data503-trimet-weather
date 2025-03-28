@@ -1,3 +1,6 @@
-secrets.*
+secrets.Makefile
 .DS_Store
 node_modules
+package-lock.json
+postgresql.conf
+data

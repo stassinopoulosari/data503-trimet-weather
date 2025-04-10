@@ -246,10 +246,11 @@ const downloadVehicleFeed = (feedURL) =>
 	},
 	saveTrimetObservation = async (observationID, vehicleStatuses) => {
 		const entryPromises = Object.entries(vehicleStatuses).map(
-			(entry) => async () => {
-				const [key, value] = entry;
-				await client.query(
-					`
+			(entry) =>
+				new Promise(async (resolve) => {
+					const [key, value] = entry;
+					await client.query(
+						`
 					INSERT INTO route_description(
 						route_id,
 						route_label
@@ -257,11 +258,12 @@ const downloadVehicleFeed = (feedURL) =>
 						ON CONFLICT (route_id)
 						DO NOTHING;
 					`,
-					[value.routeID, value.routeLabel],
-				);
-				await client.query(
-					`
-					INSERT INTO vehicle_statuses(
+						[value.routeID, value.routeLabel],
+					);
+					value.status = value.status ?? {};
+					const saveQuery = await client.query(
+						`
+					INSERT INTO trip_update(
 						trimet_observation_id,
 						vehicle_id,
 						stop_in_sequence,
@@ -271,19 +273,19 @@ const downloadVehicleFeed = (feedURL) =>
 						status_arrival_delay_seconds
 					) VALUES($1, $2, $3, $4, $5, $6, $7);
 					`,
-					[
-						observationID,
-						parseInt(key),
-						value.stopInSequence,
-						value.tripID,
-						value.routeID,
-						value.status.departureDelaySeconds,
-						value.status.arrivalDelaySeconds,
-					],
-				);
-			},
+						[
+							observationID,
+							parseInt(key),
+							value.stopInSequence,
+							value.tripID,
+							value.routeID,
+							value.status.departureDelaySeconds,
+							value.status.arrivalDelaySeconds,
+						],
+					);
+					resolve(saveQuery);
+				}),
 		);
-		console.log(entryPromises);
 		return await Promise.all(entryPromises);
 	},
 	observeTrimet = () => {
@@ -298,9 +300,6 @@ INSERT INTO trimet_observation DEFAULT VALUES RETURNING *;
 					throw "Failed to create observation";
 				}
 				observationID = observationQuery.rows[0].trimet_observation_id;
-				console.log(
-					await saveTrimetObservation(observationID, vehicleStatuses),
-				);
 				console.log(
 					`Successfully saved trimet data with ID ${observationID}`,
 				);

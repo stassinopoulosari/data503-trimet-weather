@@ -16,7 +16,9 @@ const http = require("https"),
 // Connect to Database
 const pool = new pg.Pool({
 	connectionString: secrets.databaseURI,
-	ssl: false,
+	ssl: secrets.databaseURI.startsWith("postgresql://postgres")
+		? false
+		: { rejectUnauthorized: false },
 });
 let client;
 const attemptConnection = async () => (client = await pool.connect()),

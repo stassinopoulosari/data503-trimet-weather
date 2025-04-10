@@ -283,6 +283,7 @@ const downloadVehicleFeed = (feedURL) =>
 				);
 			},
 		);
+		console.log(entryPromises);
 		return await Promise.all(entryPromises);
 	},
 	observeTrimet = () => {

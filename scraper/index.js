@@ -323,7 +323,7 @@ INSERT INTO trimet_observation DEFAULT VALUES RETURNING *;
 		observeWeather,
 	),
 	observeWeatherJob = new toadScheduler.SimpleIntervalJob(
-		{ minutes: 1 },
+		{ minutes: 30 },
 		observeWeatherTask,
 	);
 

@@ -26,11 +26,11 @@ const attemptConnection = async () => (client = await pool.connect()),
 		try {
 			await client.query(`
 				CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-				# DROP TABLE IF EXISTS trimet_observation CASCADE;
-				# DROP TABLE IF EXISTS route_description CASCADE;
-				# DROP TABLE IF EXISTS trip_update CASCADE;
-				# DROP TABLE IF EXISTS weather_description CASCADE;
-				# DROP TABLE IF EXISTS weather_observation CASCADE;
+				-- DROP TABLE IF EXISTS trimet_observation CASCADE;
+				-- DROP TABLE IF EXISTS route_description CASCADE;
+				-- DROP TABLE IF EXISTS trip_update CASCADE;
+				-- DROP TABLE IF EXISTS weather_description CASCADE;
+				-- DROP TABLE IF EXISTS weather_observation CASCADE;
 
 				CREATE TABLE trimet_observation(
 					trimet_observation_id

@@ -15,7 +15,7 @@ const http = require("https"),
 
 // Connect to Database
 const pool = new pg.Pool({
-	connectionString: secrets.testDatabaseURI,
+	connectionString: secrets.databaseURI,
 	ssl: false,
 });
 let client;

@@ -1,9 +1,9 @@
 {
 	"name": "apstassinopoulos-data503-project",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "scraper/index.js",
 	"scripts": {
-		"start": "node index.js",
+		"start": "node scraper/index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "stassinopoulosari",

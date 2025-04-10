@@ -1,1 +1,1 @@
-web: node scraper/index.js
+web: npm start

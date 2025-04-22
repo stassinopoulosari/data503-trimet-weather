@@ -4,12 +4,14 @@
 	"main": "scraper/index.js",
 	"scripts": {
 		"scraper": "node scraper/index.js",
+		"web": "node api/index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "stassinopoulosari",
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
+		"express": "^5.1.0",
 		"pg": "^8.14.1",
 		"protobufjs": "^7.4.0",
 		"toad-scheduler": "^3.0.1"

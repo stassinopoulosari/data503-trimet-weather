@@ -143,6 +143,7 @@ const downloadVehicleFeed = (feedURL) =>
 						tripID = trip.tripId ?? null,
 						routeID = trip.routeId ?? null,
 						routeLabel = (vehicle.vehicle ?? {}).label;
+					if (routeID === null) return;
 					vehicleStatuses[vehicleID] = {
 						// vehicleType: vehicleID < 1000 ? "train" : "bus",
 						stopInSequence: stopInSequence,

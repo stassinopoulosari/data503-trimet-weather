@@ -249,8 +249,9 @@ const downloadVehicleFeed = (feedURL) =>
 			(entry) =>
 				new Promise(async (resolve) => {
 					const [key, value] = entry;
-					await client.query(
-						`
+					if (value.routeID !== null && value.routeLabel !== null)
+						await client.query(
+							`
 					INSERT INTO route_description(
 						route_id,
 						route_label
@@ -258,8 +259,8 @@ const downloadVehicleFeed = (feedURL) =>
 						ON CONFLICT (route_id)
 						DO NOTHING;
 					`,
-						[value.routeID, value.routeLabel],
-					);
+							[value.routeID, value.routeLabel],
+						);
 					value.status = value.status ?? {};
 					const saveQuery = await client.query(
 						`

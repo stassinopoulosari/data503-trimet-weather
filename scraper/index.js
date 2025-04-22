@@ -300,11 +300,7 @@ INSERT INTO trimet_observation DEFAULT VALUES RETURNING *;
 					throw "Failed to create observation";
 				}
 				observationID = observationQuery.rows[0].trimet_observation_id;
-				await Promise.all(
-					vehicleStatuses.map((status) =>
-						saveTrimetObservation(observationID, status),
-					),
-				);
+				await saveTrimetObservation(observationID, vehicleStatuses);
 				console.log(
 					`Successfully saved trimet data with ID ${observationID}`,
 				);

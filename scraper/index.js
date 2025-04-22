@@ -61,7 +61,6 @@ const attemptConnection = async () => (client = await pool.connect()),
 					stop_in_sequence NUMERIC(3, 0),
 					route_id
 						NUMERIC(4, 0)
-						NOT NULL
 						REFERENCES route_description(route_id),
 					trip_id NUMERIC(10, 0) NOT NULL,
 					status_departure_delay_seconds NUMERIC(10, 0),

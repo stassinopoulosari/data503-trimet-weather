@@ -1,6 +1,6 @@
 # DATA503 Final Project (Initial)
-## Ari Stassinopoulos
-## apstassinopoulos@willamette.edu
+
+**Ari Stassinopoulos** apstassinopoulos@willamette.edu
 
 This repository contains the code for the initial attempt at my DATA503 final project. The aim of this code was to scrape TriMet data to use with OpenWeather data.
 
